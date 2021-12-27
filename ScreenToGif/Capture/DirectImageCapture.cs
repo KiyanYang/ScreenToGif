@@ -31,7 +31,7 @@ namespace ScreenToGif.Capture;
 /// https://walbourn.github.io/direct3d-sdk-debug-layer-tricks/
 /// https://devblogs.microsoft.com/cppblog/visual-studio-2015-and-graphics-tools-for-windows-10/
 /// </summary>
-internal class DirectImageCapture : BaseCapture
+internal class DirectImageCapture : ScreenCapture
 {
     #region Variables
 
@@ -380,7 +380,7 @@ internal class DirectImageCapture : BaseCapture
             frame.Image = bitmap;
 
             if (IsAcceptingFrames)
-                BlockingCollection.Add(frame);
+                FrameConsumer.Add(frame);
 
             #endregion
 
@@ -568,7 +568,7 @@ internal class DirectImageCapture : BaseCapture
             frame.Image = bitmap;
 
             if (IsAcceptingFrames)
-                BlockingCollection.Add(frame);
+                FrameConsumer.Add(frame);
 
             #endregion
 
@@ -713,7 +713,7 @@ internal class DirectImageCapture : BaseCapture
             frame.Path = $"{Project.FullPath}{FrameCount}.png";
             frame.Delay = FrameRate.GetMilliseconds();
             frame.Image = bitmap;
-            BlockingCollection.Add(frame);
+            FrameConsumer.Add(frame);
 
             #endregion
 

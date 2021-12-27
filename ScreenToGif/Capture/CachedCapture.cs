@@ -73,7 +73,7 @@ internal class CachedCapture : ImageCapture
                 frame.FrameSkipped = true;
 
             if (IsAcceptingFrames)
-                BlockingCollection.Add(frame);
+                FrameConsumer.Add(frame);
         }
         catch (Exception)
         {
@@ -129,6 +129,13 @@ internal class CachedCapture : ImageCapture
                                 else
                                     CursorStep++;
 
+                                //var ic = System.Drawing.Icon.FromHandle(hicon);
+                                //bmp = ic.ToBitmap();
+
+                                //V:NEXT
+                                //How to Store the cursor image without writing to the frame?
+                                //
+
                                 //Set to fix all alpha bits back to 255.
                                 //frame.RemoveAnyTransparency = iconInfo.hbmMask != IntPtr.Zero;
                             }
@@ -161,7 +168,7 @@ internal class CachedCapture : ImageCapture
                 frame.FrameSkipped = true;
 
             if (IsAcceptingFrames)
-                BlockingCollection.Add(frame);
+                FrameConsumer.Add(frame);
         }
         catch (Exception e)
         {

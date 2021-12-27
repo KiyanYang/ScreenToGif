@@ -11,7 +11,7 @@ using Image = System.Drawing.Image;
 
 namespace ScreenToGif.Capture;
 
-internal class ImageCapture : BaseCapture
+internal class ImageCapture : ScreenCapture
 {
     #region Variables
 
@@ -69,7 +69,7 @@ internal class ImageCapture : BaseCapture
             frame.Image = Image.FromHbitmap(CompatibleBitmap);
 
             if (IsAcceptingFrames)
-                BlockingCollection.Add(frame);
+                FrameConsumer.Add(frame);
         }
         catch (Exception)
         {
@@ -152,7 +152,7 @@ internal class ImageCapture : BaseCapture
             frame.Image = Image.FromHbitmap(CompatibleBitmap);
 
             if (IsAcceptingFrames)
-                BlockingCollection.Add(frame);
+                FrameConsumer.Add(frame);
         }
         catch (Exception)
         {

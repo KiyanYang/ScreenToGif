@@ -611,7 +611,7 @@ namespace ScreenToGif.Windows
             Pause();
 
             //Start new project.
-            var project = new ProjectInfo().CreateProjectFolder(ProjectByType.Editor);
+            var project = new ProjectInfo().CreateProjectFolder(ProjectSources.Editor);
 
             var fileName = Path.Combine(project.FullPath, "0.png");
 
@@ -3491,7 +3491,7 @@ namespace ScreenToGif.Windows
                                 {
                                     case TaskTypes.MouseClicks:
                                     {
-                                        if (Project.CreatedBy == ProjectByType.ScreenRecorder)
+                                        if (Project.CreatedBy == ProjectSources.ScreenRecorder)
                                             MouseClicksAsync(task as MouseClicksViewModel ?? MouseClicksViewModel.FromSettings());
 
                                         break;
@@ -3499,7 +3499,7 @@ namespace ScreenToGif.Windows
 
                                     case TaskTypes.KeyStrokes:
                                     {
-                                        if (Project.CreatedBy == ProjectByType.ScreenRecorder)
+                                        if (Project.CreatedBy == ProjectSources.ScreenRecorder)
                                             KeyStrokesAsync(task as KeyStrokesViewModel ?? KeyStrokesViewModel.FromSettings());
 
                                         break;
@@ -3507,7 +3507,7 @@ namespace ScreenToGif.Windows
 
                                     case TaskTypes.Delay:
                                     {
-                                        if (Project.CreatedBy != ProjectByType.Editor && Project.CreatedBy != ProjectByType.Unknown)
+                                        if (Project.CreatedBy != ProjectSources.Editor && Project.CreatedBy != ProjectSources.Unknown)
                                             DelayAsync(task as DelayViewModel ?? DelayViewModel.FromSettings(), true, true);
 
                                         break;
@@ -3515,7 +3515,7 @@ namespace ScreenToGif.Windows
 
                                     case TaskTypes.Progress:
                                     {
-                                        if (Project.CreatedBy != ProjectByType.Editor && Project.CreatedBy != ProjectByType.Unknown)
+                                        if (Project.CreatedBy != ProjectSources.Editor && Project.CreatedBy != ProjectSources.Unknown)
                                             ProgressAsync(task as ProgressViewModel ?? ProgressViewModel.FromSettings());
 
                                         break;
@@ -3523,7 +3523,7 @@ namespace ScreenToGif.Windows
 
                                     case TaskTypes.Border:
                                     {
-                                        if (Project.CreatedBy != ProjectByType.Editor && Project.CreatedBy != ProjectByType.Unknown)
+                                        if (Project.CreatedBy != ProjectSources.Editor && Project.CreatedBy != ProjectSources.Unknown)
                                             BorderAsync(task as BorderViewModel ?? BorderViewModel.FromSettings());
 
                                         break;
@@ -3531,7 +3531,7 @@ namespace ScreenToGif.Windows
 
                                     case TaskTypes.Shadow:
                                     {
-                                        if (Project.CreatedBy != ProjectByType.Editor && Project.CreatedBy != ProjectByType.Unknown)
+                                        if (Project.CreatedBy != ProjectSources.Editor && Project.CreatedBy != ProjectSources.Unknown)
                                             ShadowAsync(task as ShadowViewModel ?? ShadowViewModel.FromSettings());
 
                                         break;
@@ -3850,7 +3850,7 @@ namespace ScreenToGif.Windows
 
             ShowProgress(LocalizationHelper.Get("S.Editor.PreparingImport"), 100, false);
 
-            var project = new ProjectInfo().CreateProjectFolder(ProjectByType.Editor);
+            var project = new ProjectInfo().CreateProjectFolder(ProjectSources.Editor);
             var currentDpi = 0D;
             var wasWarned = false;
 
@@ -3915,7 +3915,7 @@ namespace ScreenToGif.Windows
 
             ShowProgress(LocalizationHelper.Get("S.Editor.PreparingImport"), 100);
 
-            var project = new ProjectInfo().CreateProjectFolder(ProjectByType.Editor);
+            var project = new ProjectInfo().CreateProjectFolder(ProjectSources.Editor);
             var currentDpi = 0D;
             var wasWarned = false;
 
